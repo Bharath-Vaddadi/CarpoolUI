@@ -1,0 +1,23 @@
+<div class="login-component">
+  <div class="login">
+
+    <div class="heading">
+      <h1 class="underline">Log In</h1>
+    </div>
+
+    <form action="">
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Enter Email Id</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Enter Password</label>
+      </div>
+
+      <button class="btn submit-btn" type="submit" (click)="submit()">Submit</button>
+    </form>
+    <p>Not a member yet? <a routerLink="/signup" class="underline">SIGN UP</a></p>
+  </div>
+  <img src="../../assets/images/auth-image.png" alt="auth-image" class="auth-image">
+</div>

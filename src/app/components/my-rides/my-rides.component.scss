@@ -1,0 +1,45 @@
+.background-image{
+  position: absolute;
+  bottom:0;
+  width:100%;
+  z-index: -1;
+}
+
+.booked-rides-heading{
+  width: 9rem;
+  background-color: var(--primary-2);
+  border-radius:5px ;
+  color: white;
+}
+
+.display{
+  column-gap: 5rem;
+}
+
+.offered-rides{
+  margin-left: 8rem;
+}
+
+.offered-rides-heading{
+  width: 9rem;
+  background-color: var(--primary-1);
+  border-radius:5px ;
+  color: white;
+}
+
+.display{
+  height: 488px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.display::-webkit-scrollbar{
+  width: 4px;
+}
+
+.display::-webkit-scrollbar-thumb{
+  background-color: grey;
+  border-radius: 10px;
+}
+
+

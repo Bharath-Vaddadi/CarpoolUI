@@ -1,0 +1,95 @@
+@import url(../book-ride/book-ride.component.scss);
+
+.active{
+  background-color: var(--primary-2);
+  color: white;
+}
+
+// .loc{
+//   margin-top: -6px;
+// }
+
+
+
+.form-display{
+  color: var(--primary-2);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 200px;
+  cursor: pointer;
+}
+
+.plus-icon{
+  border: none;
+  border-bottom: 2px solid grey;
+  border-radius: 0;
+  background-color: white;
+  font-size: 20px;
+  color: gray;
+  cursor: pointer;
+}
+
+.icon{
+  margin-left: -36px;
+  height: fit-content;
+  .start,.end{
+    color: var(--primary-2);
+    margin-left: -4px;
+  }
+}
+
+.gcircle{
+  margin-top: -10px;
+}
+
+.grey-circle{
+  margin-top: 3px;
+  li{
+  margin-top:-12px;
+  margin-bottom: 2px;
+  }
+}
+
+.seatNumber{
+  border-radius: 100%;
+  border: 2px solid var(--primary-2);
+  width: 2.5rem;
+}
+
+.source{
+  margin-top: 39px;
+}
+
+
+.start,.end{
+  color: var(--primary-2);
+  margin-left: -4px;
+}
+
+.stops{
+  width: 12.5rem;
+}
+
+.stops-container{
+  height:186px;
+  overflow-y: scroll;
+}
+
+.stops-container::-webkit-scrollbar{
+  width: 4px;
+}
+
+.stops-container::-webkit-scrollbar-thumb{
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.stops-icons{
+  margin-left: -26px;
+}
+
+.toggle{
+  color: var(--primary-1);
+  transform: rotate(180deg);
+}

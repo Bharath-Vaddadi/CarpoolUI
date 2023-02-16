@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { BookRideComponent } from './components/book-ride/book-ride.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { MyRidesComponent } from './components/my-rides/my-rides.component';
+import { OfferRideComponent } from './components/offer-ride/offer-ride.component';
+import { SignupComponent } from './components/signup/signup.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:"",component:AuthPageComponent,children:[{path:"",redirectTo:"/signup",pathMatch:"full"},{path:"signup",component:SignupComponent},{path:"login",component:LoginComponent}]},
+  {path:"welcome",component:LandingPageComponent},
+  {path:"book-ride",component:BookRideComponent},
+  {path:"offer-ride",component:OfferRideComponent},
+  {path:"my-rides",component:MyRidesComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

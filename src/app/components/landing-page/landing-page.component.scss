@@ -1,0 +1,43 @@
+.book-ride{
+  background-color: var(--primary-2);
+  cursor: pointer;
+}
+
+.offer-ride{
+  background-color: var(--primary-1);
+  cursor: pointer;
+}
+
+.options{
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.option-style{
+  height: 10rem;
+  width: 15rem;
+  border-radius: 5%;
+  text-align: center;
+  padding: 4rem;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+h1{
+  margin-top: 1rem;
+  margin-left:32rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+img{
+  height:350px;
+  width:100%;
+  margin-top: 1rem;
+}

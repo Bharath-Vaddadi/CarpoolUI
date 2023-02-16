@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex ">
+  <div class="card m-5">
+    <div class="card-body">
+      <div class="d-flex">
+        <h4 class="card-title">Book a Ride</h4>
+        <i class="bi bi-toggle-on toggle h2" routerLink="/offer-ride"></i>
+      </div>
+      <h6 class="card-subtitle mb-2 text-muted subtitle">we get you the matches asap! </h6>
+      <div class="d-flex">
+        <div class="order-form">
+          <form action="">
+            <div class="form-floating mb-1">
+              <input type="text" class="form-control" id="floatingFrom" placeholder="From">
+              <label for="floatingFrom">From</label>
+            </div>
+            <div class="form-floating mb-1">
+              <input type="text" class="form-control" id="floatingTo" placeholder="To">
+              <label for="floatingTo">To</label>
+            </div>
+            <div class="mb-1">
+              <label for="date">Date</label>
+              <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy">
+            </div>
+            <label for="floatingTo" class="mb-3">Time</label>
+            <div class="d-grid times">
+              <button type="button" class="btn time" [ngClass]="(item.value==selectedTime)?'active':'time'"
+              *ngFor="let item of Times | keyvalue" (click)="selectedTime=item.value">{{item.value}}</button>
+            </div>
+            <button type="button" class="btn submit mt-4" (click)="showMatches=true">Submit</button>
+          </form>
+        </div>
+
+        <div class="icon">
+          <ul>
+            <li class="list-group-item"><i class="bi bi-circle-fill start"></i></li>
+            <div class="grey-circle">
+              <li class="list-group-item"><i class="bi bi-circle-fill circle"></i></li>
+              <li class="list-group-item"><i class="bi bi-circle-fill circle"></i></li>
+              <li class="list-group-item"><i class="bi bi-circle-fill circle"></i></li>
+              <li class="list-group-item mb-1"><i class="bi bi-circle-fill circle"></i></li>
+            </div>
+            <li class="list-group-item loc"><i class="bi bi-geo-alt-fill end"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-5 display" *ngIf="showMatches">
+    <h1 class="matches-heading mb-3">Your Matches</h1>
+    <div class="d-grid matches pe-2">
+      <div *ngFor="let item of [].constructor(10)">
+        <app-offer-details-card></app-offer-details-card>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<img src="../../assets/images/service.png" class="background-image" alt="img">
+
+

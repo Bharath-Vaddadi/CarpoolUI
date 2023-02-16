@@ -1,0 +1,112 @@
+.active{
+  background-color: var(--primary-2);
+  color: white;
+}
+
+.back{
+  text-decoration: none;
+  color: black;
+
+}
+
+.book{
+  background-color: var(--primary-1);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px ;
+}
+
+.card{
+  background-color: white;
+  width: 24rem;
+  z-index: 2;
+  cursor: pointer;
+  height: 234px;
+ }
+
+.circle{
+  font-size: 8px;
+  color: lightgray;
+}
+
+
+.icon{
+  margin-top:30px;
+  padding:0;
+}
+
+
+.matched-user{
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+.matched-offer{
+  grid-template-columns: repeat(3,7.8rem);
+  align-items: center;
+}
+
+.start,.end{
+  font-size: 10px;
+  color: var(--primary-2);
+}
+
+.seatNumber{
+  border-radius: 100%;
+  border: 2px solid var(--primary-2);
+  width: 2.5rem;
+}
+
+
+.end{
+  font-size:12px;
+}
+
+label{
+  font-size: 10px;
+  color: grey;
+  font-weight: bold;
+}
+
+h4{
+  font-size: 15px;
+}
+
+li{
+  display: inline;
+}
+
+
+.card-display {
+  width: 24rem;
+  height: 234px;
+  perspective: 600px;
+}
+
+.matched-cards {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-face-back {
+
+  transform: rotateY(180deg);
+}

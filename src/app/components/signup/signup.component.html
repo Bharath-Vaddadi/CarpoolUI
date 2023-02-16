@@ -1,0 +1,62 @@
+<div class="signup-component">
+  <div class="signup">
+
+    <div class="heading">
+      <h1 class="underline" *ngIf="!extendForm">Sign Up</h1>
+    </div>
+
+    <form [formGroup]="signupForm" ngNativeValidate (ngSubmit)="onSignedIn()">
+      <div *ngIf="!extendForm">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control email" id="floatingInput" placeholder="name@example.com" formControlName="emailId" required>
+          <label for="floatingInput">Enter Email Id</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="form-floating">
+            <input [type]="inputType" class="form-control input" id="floatingPassword" placeholder="Password" formControlName="password" required >
+            <label for="floatingPassword">Enter Password</label>
+          </div>
+          <span class="input-group-text icon" (click)="showText()"><i class="{{icon}}"></i></span>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="ConfirmPassword" formControlName="confirmPassword">
+          <label for="floatingConfirmPassword">Confirm Password</label>
+
+        </div>
+
+        <button class="btn submit-btn" type="submit" >Submit</button>
+      </div>
+
+      <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid" class=" mt-5 notify">
+        <p>Please enter password in correct format. <br>
+          Check format here -> <i class="info bi bi-info-circle-fill" title="password should contain atleast &#10; one uppercase letter &#10; one lowercase letter &#10; one special character &#10; one numerical digit &#10; be length of 8  "></i></p>
+      </div>
+    </form>
+
+    <div *ngIf="extendForm" class="mt-4">
+
+      <div class="heading">
+        <h1 class="underline">Let Us Know More</h1>
+      </div>
+
+      <form [formGroup]="userProfileForm" ngNativeValidate (submit)="onProfileSubmit()">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingName" placeholder="Enter Name" formControlName="name"  required>
+          <label for="floatingName">Enter Name</label>
+        </div>
+
+        <div class="mb-3">
+          <label class="imgLabel">Upload Profile Image</label>
+          <input type="file" class="form-control" id="floatingimage" placeholder="uploadImage" formControlName="image" (change)="createUrl($event)" required>
+        </div>
+
+        <button type="submit" class="btn submit-btn mt-3 mb-1">Finish</button>
+      </form>
+
+    </div>
+    <p>Already a member? <a routerLink="/login" class="underline">LOG IN</a></p>
+  </div>
+  <img src="../../assets/images/auth-image.png" alt="auth-image" class="auth-image">
+</div>

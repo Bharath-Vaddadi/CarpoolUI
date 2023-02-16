@@ -1,0 +1,44 @@
+
+.logo{
+  margin:1rem 2.5rem;
+}
+
+.menu{
+  min-width: 0;
+  width: 120px;
+  text-align: center;
+
+}
+
+.dropdown-item{
+  color: grey;
+}
+
+.dropdown-item:hover{
+
+  color: black;
+  background-color: white;
+}
+
+.user-login{
+  align-items: center;
+  margin-right:3rem ;
+}
+
+.user-image{
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.username{
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+
+.active-link{
+  background-color: var(--primary-2);
+  color: white;
+}
