@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
@@ -13,6 +13,9 @@ import { OfferDetailsCardComponent } from './shared/offer-details-card/offer-det
 import { OfferRideComponent } from './components/offer-ride/offer-ride.component';
 import { MyRidesComponent } from './components/my-rides/my-rides.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from './services/api.service';
+import { HelperService } from './services/helper.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
@@ -32,9 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService,HelperService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

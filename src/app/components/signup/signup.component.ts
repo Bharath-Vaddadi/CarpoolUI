@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { UserDetails } from 'src/app/Models/user-details.model';
+import { UserDetails } from 'src/app/models/user-details.model';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   userProfileForm!:FormGroup;
 
-  constructor(private route:Router,private sanitizer:DomSanitizer) { }
+  constructor(private route:Router,private sanitizer:DomSanitizer,private service:ApiService) { }
 
   ngOnInit(): void {
     this.signupForm=new FormGroup({
@@ -57,20 +58,33 @@ export class SignupComponent implements OnInit {
 
   onSignedIn(){
     if(this.signupForm.valid && this.signupForm.get('password')?.value == this.signupForm.get('confirmPassword')?.value){
-      this.extendForm = true;
+
+      this.service.verifyUser(this.signupForm.get('emailId')?.value).subscribe(data=>{
+        if(data){
+          alert("User Already Exists");
+        }
+        else{
+          this.extendForm = true;
+        }
+      });
+
     }
   }
 
   onProfileSubmit(){
     if(this.userProfileForm.valid){
-      this.route.navigate(["/welcome"]);
+      console.log(this.userProfileForm.value.image);
       var userDetails = new UserDetails(
         this.userProfileForm.value.name,
         this.signupForm.value.emailId,
         this.signupForm.value.password,
-        this.userProfileForm.value.image
-      )
-      console.log(userDetails);
+        this.userProfileForm.value.image['changingThisBreaksApplicationSecurity'])
+      this.service.signupUser(userDetails).subscribe(data=>{
+        console.log(data);
+      });
+      alert("user registered successfully");
+      this.route.navigate(["/login"]);
+
     }
   }
 

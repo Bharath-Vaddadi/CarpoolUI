@@ -24,6 +24,16 @@
   font-size: 8px;
 }
 
+.date-seat{
+  .form-control{
+    width:10rem;
+  }
+
+  .seat{
+    width: 3rem;
+  }
+}
+
 .form-control{
   border:none;
   border-bottom: 2px solid grey;

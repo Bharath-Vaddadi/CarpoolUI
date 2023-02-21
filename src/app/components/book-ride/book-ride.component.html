@@ -10,25 +10,31 @@
       <h6 class="card-subtitle mb-2 text-muted subtitle">we get you the matches asap! </h6>
       <div class="d-flex">
         <div class="order-form">
-          <form action="">
+          <form action="" ngNativeValidate [formGroup]="rideBookingForm" (ngSubmit)="onSubmit()">
             <div class="form-floating mb-1">
-              <input type="text" class="form-control" id="floatingFrom" placeholder="From">
+              <input type="text" class="form-control" id="floatingFrom" placeholder="From" formControlName="from" required>
               <label for="floatingFrom">From</label>
             </div>
             <div class="form-floating mb-1">
-              <input type="text" class="form-control" id="floatingTo" placeholder="To">
+              <input type="text" class="form-control" id="floatingTo" placeholder="To" formControlName="to" required>
               <label for="floatingTo">To</label>
             </div>
-            <div class="mb-1">
-              <label for="date">Date</label>
-              <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy">
+            <div class="d-flex date-seat">
+              <div class="mb-1">
+                <label for="date">Date</label>
+                <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy" formControlName="date" required>
+              </div>
+              <div class="mb-1 ms-auto">
+                <label for="seats">Seats</label>
+                <input type="number"class="form-control seat" id="date" placeholder="1" formControlName="seats" required>
+              </div>
             </div>
             <label for="floatingTo" class="mb-3">Time</label>
             <div class="d-grid times">
               <button type="button" class="btn time" [ngClass]="(item.value==selectedTime)?'active':'time'"
-              *ngFor="let item of Times | keyvalue" (click)="selectedTime=item.value">{{item.value}}</button>
+              *ngFor="let item of Times | keyvalue" (click)="selectedTime=item.value" required>{{item.value}}</button>
             </div>
-            <button type="button" class="btn submit mt-4" (click)="showMatches=true">Submit</button>
+            <button type="submit" class="btn submit mt-4">Submit</button>
           </form>
         </div>
 
@@ -51,8 +57,8 @@
   <div class="ms-5 display" *ngIf="showMatches">
     <h1 class="matches-heading mb-3">Your Matches</h1>
     <div class="d-grid matches pe-2">
-      <div *ngFor="let item of [].constructor(10)">
-        <app-offer-details-card></app-offer-details-card>
+      <div *ngFor="let order of orderMatches ">
+        <app-offer-details-card [ride]="order" [choosedSeat]="rideBookingForm.value.seats"></app-offer-details-card>
       </div>
     </div>
 

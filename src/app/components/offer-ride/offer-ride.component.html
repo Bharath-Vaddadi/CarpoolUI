@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<form action="">
+<form ngNativeValidate [formGroup]="offerRideForm" (submit)="onOffered()">
   <div class="d-flex ">
       <div class="card m-5">
         <div class="card-body">
@@ -12,16 +12,16 @@
             <div class="order-form">
 
                 <div class="form-floating mb-1">
-                  <input type="text" class="form-control" id="floatingFrom" placeholder="From">
+                  <input type="text" class="form-control" id="floatingFrom" placeholder="From" formControlName="from">
                   <label for="floatingFrom">From</label>
                 </div>
                 <div class="form-floating mb-1">
-                  <input type="text" class="form-control" id="floatingTo" placeholder="To">
+                  <input type="text" class="form-control" id="floatingTo" placeholder="To" formControlName="to">
                   <label for="floatingTo">To</label>
                 </div>
                 <div class="mb-1">
                   <label for="date">Date</label>
-                  <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy">
+                  <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy" formControlName="date">
                 </div>
                 <label for="floatingTo" class="mb-3">Time</label>
                 <div class="d-grid times">
@@ -60,7 +60,7 @@
             <div class="order-form">
               <div class="input-group" *ngFor="let _ of [].constructor(stopsCount);let i=index;">
                 <div class="form-floating mb-1">
-                  <input type="text" class="form-control" id="floatingFrom" placeholder="stops" [ngClass]="(stopsCount==i+1)?'stops':'form-control'">
+                  <input type="text" class="form-control" id="floatingFrom" placeholder="stops" [ngClass]="(stopsCount==i+1)?'stops':'form-control'" formControlName="stop{{i+1}}">
                   <label for="floatingFrom">Stop{{i+1}}</label>
                 </div>
                 <span *ngIf="stopsCount==i+1"
@@ -91,7 +91,10 @@
             </div>
             <div class="fare ms-auto">
               <label>Fare</label>
-              <h3 class="mt-3">180$</h3>
+              <div class="d-flex">
+                <h6 class="mt-2">$</h6>
+                <input type="number" class="form-control" id="fare" formControlName="fare">
+              </div>
             </div>
           </div>
           <button type="submit" class="btn submit mt-4">Submit</button>
