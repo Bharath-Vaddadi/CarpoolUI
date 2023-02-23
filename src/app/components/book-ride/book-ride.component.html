@@ -58,7 +58,7 @@
     <h1 class="matches-heading mb-3">Your Matches</h1>
     <div class="d-grid matches pe-2">
       <div *ngFor="let order of orderMatches ">
-        <app-offer-details-card [ride]="order" [choosedSeat]="rideBookingForm.value.seats"></app-offer-details-card>
+        <app-offer-details-card [ride]="order" [choosedSeat]="rideBookingForm.value.seats" [allowFlip]="true"></app-offer-details-card>
       </div>
     </div>
 

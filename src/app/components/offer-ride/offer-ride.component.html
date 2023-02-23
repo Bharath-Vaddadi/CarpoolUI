@@ -12,16 +12,16 @@
             <div class="order-form">
 
                 <div class="form-floating mb-1">
-                  <input type="text" class="form-control" id="floatingFrom" placeholder="From" formControlName="from">
+                  <input type="text" class="form-control" id="floatingFrom" placeholder="From" formControlName="from" required>
                   <label for="floatingFrom">From</label>
                 </div>
                 <div class="form-floating mb-1">
-                  <input type="text" class="form-control" id="floatingTo" placeholder="To" formControlName="to">
+                  <input type="text" class="form-control" id="floatingTo" placeholder="To" formControlName="to" required>
                   <label for="floatingTo">To</label>
                 </div>
                 <div class="mb-1">
                   <label for="date">Date</label>
-                  <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy" formControlName="date">
+                  <input type="text"class="form-control" id="date" placeholder="xx/mm/yyyy" formControlName="date" required>
                 </div>
                 <label for="floatingTo" class="mb-3">Time</label>
                 <div class="d-grid times">
@@ -93,7 +93,7 @@
               <label>Fare</label>
               <div class="d-flex">
                 <h6 class="mt-2">$</h6>
-                <input type="number" class="form-control" id="fare" formControlName="fare">
+                <input type="number" class="form-control" id="fare" formControlName="fare" required>
               </div>
             </div>
           </div>

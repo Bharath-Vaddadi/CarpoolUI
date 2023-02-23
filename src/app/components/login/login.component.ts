@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.service.login(loginDetails).subscribe(data=>{
         var res = data.toString();
         if(res == "User Do not exists"){
-          alert("User not registered. Please signup to proceed");
+          alert("Either email or password is wrong, if not registered please signup");
         }
         else{
           localStorage.setItem("token",res.substring(0,res.length-1));

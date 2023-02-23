@@ -1,9 +1,9 @@
 <div class="card-display">
-  <div class="matched-cards" [ngClass]="(isClicked)?'is-flipped':''">
+  <div class="matched-cards" [ngClass]="(isClicked &&allowFlip)?'is-flipped':''">
     <div class="card card-face" (click)="isClicked=true" >
       <div class="card-body">
         <div class="d-flex">
-          <h5 class="card-title">Amit Bansal</h5>
+          <h5 class="card-title">{{ride.name}}</h5>
           <img src="../../assets/images/person.jfif" alt="photo" class="matched-user ms-auto">
         </div>
         <div class="d-grid matched-offer">
@@ -38,9 +38,11 @@
             <label>Price</label>
             <h4>${{ride.fare}}</h4>
           </div>
-          <div></div>
           <div>
-            <label>Seat Availability</label>
+
+          </div>
+          <div>
+            <label>{{display}}</label>
             <h4>{{ride.seats}}</h4>
           </div>
 

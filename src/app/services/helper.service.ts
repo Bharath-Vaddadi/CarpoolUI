@@ -7,5 +7,6 @@ import { OrderDetails } from '../models/order';
 export class HelperService {
 
   orderBooked:boolean = false;
+  displayBookings=false;
   constructor() { }
 }

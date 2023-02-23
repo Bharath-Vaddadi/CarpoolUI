@@ -4,8 +4,8 @@
   <div class="booked-rides ms-5 mt-5">
     <button type="button" class="btn booked-rides-heading">Booked Rides</button>
     <div class="mt-3 display">
-      <div class="mb-2 me-2" *ngFor="let _ of [].constructor(3)">
-        <app-offer-details-card ></app-offer-details-card>
+      <div class="mb-2 me-2" *ngFor="let order of profileOrders">
+        <app-offer-details-card [ride]="order" [allowFlip]="false"></app-offer-details-card>
       </div>
     </div>
   </div>
@@ -13,8 +13,18 @@
   <div class="offered-rides mt-5 ">
     <button type="button" class="btn offered-rides-heading">Offered Rides</button>
     <div class="mt-3 display">
-      <div class="mb-2 me-2" *ngFor="let _ of [].constructor(3)">
-        <app-offer-details-card ></app-offer-details-card>
+      <div class="mb-2 me-2" *ngFor="let offer of profileOffers" (click)="displayBookings(offer.offerId,offer.fare)">
+
+        <app-offer-details-card [ride]="offer" [allowFlip]="false" [path]="'showBooking'"></app-offer-details-card>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="show" class="mt-5">
+    <div class="mt-5 display">
+      <div class="mt-1 mb-2 ms-3 me-2" *ngFor="let booking of bookings" (click)="show=false;">
+        <app-offer-details-card [ride]="booking" [allowFlip]="false"></app-offer-details-card>
       </div>
     </div>
   </div>

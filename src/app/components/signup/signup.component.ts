@@ -53,7 +53,14 @@ export class SignupComponent implements OnInit {
 
   createUrl(e:any){
     this.src = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(e.target.files[0]));
-    this.userProfileForm.value.image = this.src;
+    this.userProfileForm.value.image = ""
+    // var file = e.target.files[0];
+    // var reader = new FileReader();
+    // reader.readAsDataURL(file);
+    // reader.onloadend = (e)=>{
+    //   this.userProfileForm.value.image=reader.result;
+    // }
+
   }
 
   onSignedIn(){
@@ -67,7 +74,6 @@ export class SignupComponent implements OnInit {
           this.extendForm = true;
         }
       });
-
     }
   }
 
@@ -78,7 +84,7 @@ export class SignupComponent implements OnInit {
         this.userProfileForm.value.name,
         this.signupForm.value.emailId,
         this.signupForm.value.password,
-        this.userProfileForm.value.image['changingThisBreaksApplicationSecurity'])
+        this.userProfileForm.value.image)
       this.service.signupUser(userDetails).subscribe(data=>{
         console.log(data);
       });

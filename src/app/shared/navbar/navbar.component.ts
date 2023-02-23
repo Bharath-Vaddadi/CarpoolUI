@@ -15,12 +15,13 @@ export class NavbarComponent implements OnInit {
 
 
   username!:string;
-  // image!:SafeUrl;
+  image!:string;
 
   constructor(private service:ApiService,private sanitizer:DomSanitizer) {
       this.service.getUserDetails().subscribe(data=>{
       this.users=data;
       this.username = this.users[this.currentUserIdx].name;
+      this.image=this.users[this.currentUserIdx].imageSrc;
     });
 
   }

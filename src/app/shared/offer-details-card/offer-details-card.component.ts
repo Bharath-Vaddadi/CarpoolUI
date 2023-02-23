@@ -12,15 +12,16 @@ export class OfferDetailsCardComponent implements OnInit {
 
   isClicked=false;
 
-  @Input() ride:any;
+  @Input() ride:any=[];
   @Input() choosedSeat:any;
+  @Input() allowFlip!:boolean;
+  @Input() path!:string;
+  display = (this.allowFlip)?"Seat Availability":"Seats"
 
   constructor(private apiService:ApiService,private helperService:HelperService) { }
 
   ngOnInit(): void {
     console.log(this.ride);
-    console.log(this.choosedSeat);
-
   }
 
   bookRide(offerId:number){
@@ -29,6 +30,10 @@ export class OfferDetailsCardComponent implements OnInit {
       location.reload();
     })
 
+  }
+
+  enableBooking(){
+    this.helperService.displayBookings=true;
   }
 
 

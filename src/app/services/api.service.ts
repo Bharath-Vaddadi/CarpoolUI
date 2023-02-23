@@ -46,4 +46,16 @@ export class ApiService {
   postOffer(offerDetails:OfferDetails){
     return this.http.post(this.apiUrl+"/Offers",offerDetails);
   }
+
+  getProfileOrders(userId:number){
+    return this.http.get(this.apiUrl+"/profile/"+userId+"/orders");
+  }
+
+  getProfileOffers(userId:number){
+    return this.http.get(this.apiUrl+"/profile/"+userId+"/offers");
+  }
+
+  getProfileOffersBookings(offerId:number,fare:number){
+    return this.http.get(this.apiUrl+"/profile/booking/"+offerId+"/"+fare);
+  }
 }
