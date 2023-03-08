@@ -25,8 +25,8 @@ export class BookRideComponent implements OnInit {
   ngOnInit(): void {
 
     this.rideBookingForm = new FormGroup({
-      'from' : new FormControl(null,Validators.required),
-      'to' : new FormControl(null,Validators.required),
+      'from' : new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]')]),
+      'to' : new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]')]),
       'date': new FormControl(null,Validators.required),
       'seats':new FormControl(0,Validators.required)
     });
@@ -34,15 +34,17 @@ export class BookRideComponent implements OnInit {
 
   onSubmit(){
     if(this.rideBookingForm.valid){
+      var dateInp = this.rideBookingForm.value.date.split('-');
+      var formattedDate = dateInp[2]+'/'+dateInp[1]+'/'+dateInp[0];
       var orderDetails = new OrderDetails(
         this.rideBookingForm.value.from,
         this.rideBookingForm.value.to,
-        this.rideBookingForm.value.date,
+        formattedDate,
         this.selectedTime,
         this.rideBookingForm.value.seats,0
         ,(this.currUserId==null)?0:parseInt(this.currUserId)
       );
-      console.log(this.selectedTime)
+
       this.apiService.postOrder(orderDetails).subscribe(data=>{
         console.log(data);
         this.apiService.getOrderMatches().subscribe(

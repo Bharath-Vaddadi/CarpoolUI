@@ -35,27 +35,7 @@
       </div>
     </form>
 
-    <div *ngIf="extendForm" class="mt-4">
 
-      <div class="heading">
-        <h1 class="underline">Let Us Know More</h1>
-      </div>
-
-      <form [formGroup]="userProfileForm" ngNativeValidate (submit)="onProfileSubmit()">
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingName" placeholder="Enter Name" formControlName="name"  required>
-          <label for="floatingName">Enter Name</label>
-        </div>
-
-        <div class="mb-3">
-          <label class="imgLabel">Upload Profile Image</label>
-          <input type="file" class="form-control" id="floatingimage" placeholder="uploadImage" formControlName="image" (change)="createUrl($event)" required>
-        </div>
-
-        <button type="submit" class="btn submit-btn mt-3 mb-1">Finish</button>
-      </form>
-
-    </div>
     <p>Already a member? <a routerLink="/login" class="underline">LOG IN</a></p>
   </div>
   <img src="../../assets/images/auth-image.png" alt="auth-image" class="auth-image">

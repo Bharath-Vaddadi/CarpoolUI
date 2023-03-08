@@ -24,12 +24,12 @@ export class OfferRideComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerRideForm=new FormGroup({
-      'from':new FormControl(null,Validators.required),
-      'to': new FormControl(null,Validators.required),
+      'from':new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]')]),
+      'to': new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]')]),
       'date': new FormControl(null,Validators.required),
-      'stop1':new FormControl(""),
-      'stop2':new FormControl(""),
-      'stop3':new FormControl(""),
+      'stop1':new FormControl("",[Validators.pattern('[a-zA-Z]')]),
+      'stop2':new FormControl("",[Validators.pattern('[a-zA-Z]')]),
+      'stop3':new FormControl("",[Validators.pattern('[a-zA-Z]')]),
       'fare': new FormControl(0,Validators.required)
     })
   }
@@ -50,11 +50,12 @@ export class OfferRideComponent implements OnInit {
           stops=stops+",";
         }
       }
-
+      var dateInp = this.offerRideForm.value.date.split('-');
+      var formattedDate = dateInp[2]+'/'+dateInp[1]+'/'+dateInp[0];
       var offerDetails = new OfferDetails(
         this.offerRideForm.value.from,
         this.offerRideForm.value.to,
-        this.offerRideForm.value.date,
+        formattedDate,
         this.selectedTime,
         stops,this.selectedSeat,
         this.offerRideForm.value.fare,
@@ -65,6 +66,10 @@ export class OfferRideComponent implements OnInit {
         alert(data);
         location.reload();
       });
+    }
+    else
+    {
+      alert(" Numericals not acceptable in From,to and Stops. Verify and submit again");
     }
   }
 

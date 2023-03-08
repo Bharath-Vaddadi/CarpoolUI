@@ -8,18 +8,18 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  users:any;
+  user:any;
   currentUser= localStorage.getItem("userId");
-  currentUserIdx:number = (this.currentUser==null)?0:parseInt(this.currentUser)-1;
+  currentUserIdx:number = (this.currentUser==null)?0:parseInt(this.currentUser);
 
 
   username!:string;
 
   constructor(private service:ApiService) {
-    this.service.getUserDetails().subscribe(data=>{
-      this.users=data;
-      console.log(this.users);
-      this.username = this.users[this.currentUserIdx].name;
+    this.service.getUser(this.currentUserIdx).subscribe(data=>{
+      this.user=data;
+      console.log(this.user);
+      this.username = this.user.displayName;
     });
    }
 

@@ -1,0 +1,22 @@
+label{
+ color:var(--primary-2);
+}
+
+.profile{
+  margin: 50px auto;
+  width: 70%;
+  border: 2px solid grey;
+  border-radius: 10px;
+  box-shadow: 10px 8px var(--primary-2);
+}
+
+.profile-img{
+  width: 150px;
+  height:150px;
+  border-radius: 100%;
+}
+
+.save{
+  background-color: var(--primary-1);
+  color: white;
+}

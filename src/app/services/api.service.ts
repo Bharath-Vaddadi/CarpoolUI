@@ -15,8 +15,8 @@ export class ApiService {
 
   apiUrl:string = "https://localhost:7262/CarpoolApi";
 
-  getUserDetails(){
-    return this.http.get(this.apiUrl+"/Signup");
+  getUser(id:number){
+    return this.http.get(this.apiUrl+"/Signup/user/"+id);
   }
 
   verifyUser(username:string){
@@ -25,6 +25,10 @@ export class ApiService {
 
   signupUser(userDetails:UserDetails){
     return this.http.post(this.apiUrl+"/Signup",userDetails);
+  }
+
+  updateUser(userDetails:UserDetails,id:number){
+    return this.http.put(this.apiUrl+"/Signup/"+id,userDetails);
   }
 
   login(loginDetails:LoginDetails){

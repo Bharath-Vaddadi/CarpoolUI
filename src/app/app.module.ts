@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './services/api.service';
 import { HelperService } from './services/helper.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     OfferDetailsCardComponent,
     OfferRideComponent,
     MyRidesComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

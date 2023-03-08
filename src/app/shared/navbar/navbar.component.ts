@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -9,28 +10,36 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  users:any;
+  user:any;
   currentUser= localStorage.getItem("userId");
-  currentUserIdx:number = (this.currentUser==null)?0:parseInt(this.currentUser)-1;
+  currentUserIdx:number = (this.currentUser==null)?0:parseInt(this.currentUser);
 
 
   username!:string;
   image!:string;
 
-  constructor(private service:ApiService,private sanitizer:DomSanitizer) {
-      this.service.getUserDetails().subscribe(data=>{
-      this.users=data;
-      this.username = this.users[this.currentUserIdx].name;
-      this.image=this.users[this.currentUserIdx].imageSrc;
+  constructor(private service:ApiService,private route:Router) {
+      this.service.getUser(this.currentUserIdx).subscribe(data=>{
+      this.user=data;
+      this.username = this.user.displayName;
+      this.image=this.user.imageSrc;
+      if(this.image==""){
+        this.image = "../../../assets/images/user-profile-icon-free-vector.jpg"
+      }
     });
 
   }
 
   ngOnInit(): void {
 
+
   }
 
   logout(){
     localStorage.clear();
+  }
+
+  navigateHome(){
+    this.route.navigate(['/welcome']);
   }
 }

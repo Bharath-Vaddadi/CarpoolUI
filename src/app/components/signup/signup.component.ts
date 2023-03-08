@@ -33,11 +33,6 @@ export class SignupComponent implements OnInit {
       'confirmPassword': new FormControl(null,[ Validators.required])
     });
 
-    this.userProfileForm = new FormGroup({
-      'name':new FormControl(null,Validators.required),
-      'image':new FormControl(null,Validators.required)
-    })
-
   }
 
   showText(){
@@ -51,18 +46,6 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  createUrl(e:any){
-    this.src = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(e.target.files[0]));
-    this.userProfileForm.value.image = ""
-    // var file = e.target.files[0];
-    // var reader = new FileReader();
-    // reader.readAsDataURL(file);
-    // reader.onloadend = (e)=>{
-    //   this.userProfileForm.value.image=reader.result;
-    // }
-
-  }
-
   onSignedIn(){
     if(this.signupForm.valid && this.signupForm.get('password')?.value == this.signupForm.get('confirmPassword')?.value){
 
@@ -71,26 +54,21 @@ export class SignupComponent implements OnInit {
           alert("User Already Exists");
         }
         else{
-          this.extendForm = true;
+          var userDetails=new UserDetails(
+
+            this.signupForm.value.emailId.split('@')[0],
+            this.signupForm.value.emailId,
+            this.signupForm.value.password,"../../../assets/images/user-profile-icon-free-vector.jpg","","","","",""
+          )
+          console.log(userDetails);
+
+          this.service.signupUser(userDetails).subscribe(data=>{
+            console.log(data);
+            alert("user registered successfully");
+            this.route.navigate(["/login"]);
+          });
         }
       });
-    }
-  }
-
-  onProfileSubmit(){
-    if(this.userProfileForm.valid){
-      console.log(this.userProfileForm.value.image);
-      var userDetails = new UserDetails(
-        this.userProfileForm.value.name,
-        this.signupForm.value.emailId,
-        this.signupForm.value.password,
-        this.userProfileForm.value.image)
-      this.service.signupUser(userDetails).subscribe(data=>{
-        console.log(data);
-      });
-      alert("user registered successfully");
-      this.route.navigate(["/login"]);
-
     }
   }
 
